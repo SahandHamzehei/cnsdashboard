@@ -1,0 +1,93 @@
+#myVideo {
+  position: fixed;
+  object-fit: cover;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-height: 100%;
+  background-size: cover;
+  z-index: 10000000;
+  top: 0px;
+  /* max-width: 100%; */
+}
+
+.bibi {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000000;
+  z-index: 10000000;
+}
+
+.back {
+  line-height: 12px;
+  /* width: 18px; */
+  font-size: 8pt;
+  /* margin-top: 1px;
+  margin-right: 2px; */
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  /* border-radius: 4px; */
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 10000000;
+}
+
+@media only screen and (max-width: 600px) {
+  .back {
+    font-size: 10px;
+    padding: 7px 15px;
+  }
+}
+
+/* 
+.video-view {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: #000000;
+  z-index: 10000000;
+  margin-top: 30px;
+}
+
+.video-view .cta {
+  text-decoration: none;
+  margin: 0;
+  padding-bottom: 50px; 
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  --c: steelblue;
+  color: var(--c);
+  font-size: 13px;
+  border: 0.3em solid var(--c);
+  border-radius: 1.5em;
+  width: 10em;
+  height: 3em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 3em;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.video-view .cta:hover {
+  color: white;
+}
+
+.video-view .cta:nth-child(1) {
+  --n: 1;
+} */

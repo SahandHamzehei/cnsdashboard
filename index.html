@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+  <head>
+    
+    <!-- META -->
+    <meta charset='utf-8' />
+    <meta name='viewport' content='initial-scale=1, maximum-scale=1, user-scalable=no' />
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- TITLE -->
+    <title>Pollution CNS Explorer</title>
+
+    <!-- STYLE SHEETS -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:300,400,600' rel='stylesheet'>
+    <link rel='stylesheet' href='stylesheets/style.css' type='text/css' />
+    <link rel='stylesheet' href='stylesheets/d3.slider.css' type='text/css' />
+    <link rel='stylesheet' href='stylesheets/toggle.css' type='text/css' />
+    <link rel='stylesheet' href='stylesheets/skip.css' type='text/css' />
+
+    <!-- D3 -->
+    <script src='scripts/d3.min.js'></script>
+    <script src='scripts/d3.slider.js'></script>
+
+
+    <!-- MapBox -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+
+  </head>
+
+<!-- Video part -->
+<div class="bibi" id='bibi'></div>
+  <div class='video-view' id = 'video-view'>
+    <video id="myVideo"  controls="controls" class="video">
+      <source src="data\V3.mp4" type="video/mp4">
+    </video>
+      <div class="back">
+          <!-- <span>SKIP</span> -->
+          <a class="mamad" id='tp'>skip</a>
+      
+      </div>
+  </div>
+<!-- Video part -->
+
+  <body>
+    <!-- HEADER -->
+    <div id='header'>
+
+      <!-- HEADER/ABOUT-LINK -->
+      <div id='about-link'>
+        <span class='desktop'>About</span>
+      </div>
+
+      <!-- HEADER/LEGEND-MOBILE -->
+      <div id='legend-mobile'></div>
+
+      <!-- HEADER/MODES -->
+      <div id='modes'>
+
+        <div class='mode-selected' id='mode-story'>
+          <span class='desktop'>Story</span>
+          <span class='mobile'>Story</span>
+        </div>
+
+        <div class='mode' id='mode-viz'>
+          <span class='desktop'>Visualization</span>
+          <span class='mobile'>Viz</span>
+        </div>
+
+        <div class='mode' id='mode-stats'>
+          <span class='desktop'>Statistics</span>
+          <span class='mobile'>Stats</span>
+        </div>
+
+      </div>
+
+      <!-- HEADER/TITLE -->
+      <div id='title'>
+        <span class='desktop'>Pollution&nbsp;CNS&nbsp;Explorer</span>
+      </div>
+
+    </div>
+
+    <!-- ABOUT -->
+    <div class='about' id='about'>
+
+      <!-- ABOUT/CLOSE -->
+      <div id = 'about-close'></div>
+      
+      <!-- ABOUT/CONTENT -->
+      <div id='about-content'>
+
+        <!-- ABOUT/CONTENT/HEADER -->
+        <div id = 'about-header'>Can pollution link to Central Nervous System diseases?</div>
+
+        <!-- ABOUT/CONENT/TEXT -->
+        <div id = 'about-text'>
+          
+          <p>
+            Neurodegeneration is a process of loss of structure or function of neurons such as the death of neurons. Many neurodegenerative diseases occur as a result of this process. The central nervous system (CNS) controls most functions of the body and the mind. CNS is affected by the neurodegeneration process and causes many disorders and diseases such as Alzheimer's, Parkinson's, and stroke.
+          </p>
+          
+          <p>
+            Particulate matter or in short term PM are microscopic particulate of solid or liquid matter suspended in the air. Its source can be natural or caused by humans. They have an impact on the climate and precipitation which adversely affect human health. PM 2.5 refers to the size of the particulates with 2.5 micrometers or less. Recently, discoveries have found a link between pollution and CNS disease. 
+          </p>
+
+          <p>
+            Our team aims to investigate this link by considering the pollution data and CNS disease based on the Italian province available from  <a href='www.istat.it/it/ambiente-ed-energia?dati'>ISTAT database</a>.
+          </p>
+          <p>
+            The final results that are obtained by the data analysis is shown by this Dashboard. The dashboard has three main sections, the story mode, which shows insights about the distribution of CNS diseases and pollution in Italy, the visualization section, in which the user is freely allowed to explore the data, and the statistics mode in which relevant statistics are shown about the data, such as correlation between CNS and pollution, and regression results.           </p>
+          </p>
+          <p>
+            The final results not confirm the link between CNS and pollution over the Italian territory, this couold be either due to the effective lack of a link, or to the lack of data to investigate it.           </p>
+          </p>
+          <p>
+            Feel free to click around the map and to look with your eyes the most polluted cities in Italy, and the one which suffers more of CNS diseases, and the relation between the two.          </p>
+          </p>
+
+            <!-- ABOUT/CONENT/TEXT/CREDITS -->
+          <div id='about-credits'>
+            <p>
+              <br/>Supervisor - <a href='https://www.det.polito.it/personale/scheda/(nominativo)/guido.pagana' target='_blank'>Guido Pagana</a>
+              <br/>Data Analysis - <a href='https://www.linkedin.com/in/luis-daniel-martinez-salgado-178b2a155' target='_blank'>Luis Martinez</a>, <a href='linkedin.com/in/mostafakarami' target='_blank'>Mostafa Karami</a>
+              <br/>Dashboard Development - <a href='www.linkedin.com/in/sahand-hamzehei' target='_blank'>Sahand Hamzehei</a>, <a href='https://www.linkedin.com/in/tommaso-cal%C3%B3-20509512a' target='_blank'>Tommaso Calò</a>
+
+              <br/>Map engine - <a href='https://www.mapbox.com/mapbox-gl-js/' target='_blank'>Mapbox GL JS</a>
+              <br/>Graphing engine - <a href='https://d3js.org' target='_blank'>D3.js</a>
+              <br/>Github - <a href='https://sahandhamzehei.github.io/cnsdashboard/' target='_blank'>@cnsdashboard</a>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    
+    </div>
+
+    <!-- SIDE BAR -->
+    <div id='sidebar'>
+
+      <!-- LEGEND -->
+      <div id='legend'>
+
+        <!-- LEGEND/CONTENT -->
+        <div id='legend-content'>
+
+          <div class='line'>CNS deaths count:</div>
+          <div class='line'>
+            <div class = 'av' id='pop_missing'>&#9724;&#xFE0E;</div>
+            <div class='caption'>missing&nbsp;data&nbsp;</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_0'>&#9724;&#xFE0E;</div>
+            <div class='caption'>0&nbsp;-&nbsp;10</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_100'>&#9724;&#xFE0E;</div>
+            <div class='caption'>10&nbsp;-&nbsp;20</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_200'>&#9724;&#xFE0E;</div>
+            <div class='caption'>20&nbsp;-&nbsp;40</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_400'>&#9724;&#xFE0E;</div>
+            <div class='caption'>40&nbsp;-&nbsp;80</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_800'>&#9724;&#xFE0E;</div>
+            <div class='caption'>80&nbsp;-&nbsp;160</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_1600'>&#9724;&#xFE0E;</div>
+            <div class='caption'>160&nbsp;-&nbsp;320</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_3200'>&#9724;&#xFE0E;</div>
+            <div class='caption'>320&nbsp;-&nbsp;640</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_6400'>&#9724;&#xFE0E;</div>
+            <div class='caption'>640&nbsp;-&nbsp;1280</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_12800'>&#9724;&#xFE0E;</div>
+            <div class='caption'>more&nbsp;than&nbsp;1280</div>
+          </div>
+          
+        </div>
+        <div id='legend-rel'>
+
+          <div class='line'>CNSd relative count:</div>
+          <div class='line'>
+            <div class = 'av' id='pop_missing'>&#9724;&#xFE0E;</div>
+            <div class='caption'>missing&nbsp;data&nbsp;</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_0'>&#9724;&#xFE0E;</div>
+            <div class='caption'>0&nbsp;-&nbsp;1</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_100'>&#9724;&#xFE0E;</div>
+            <div class='caption'>1&nbsp;-&nbsp;2</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_200'>&#9724;&#xFE0E;</div>
+            <div class='caption'>2&nbsp;-&nbsp;3</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_400'>&#9724;&#xFE0E;</div>
+            <div class='caption'>3&nbsp;-&nbsp;4</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_800'>&#9724;&#xFE0E;</div>
+            <div class='caption'>4&nbsp;-&nbsp;5</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_1600'>&#9724;&#xFE0E;</div>
+            <div class='caption'>5&nbsp;-&nbsp;6</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_3200'>&#9724;&#xFE0E;</div>
+            <div class='caption'>6&nbsp;-&nbsp;7</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_6400'>&#9724;&#xFE0E;</div>
+            <div class='caption'>7&nbsp;-&nbsp;8</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_12800'>&#9724;&#xFE0E;</div>
+            <div class='caption'>more&nbsp;than&nbsp;8</div>
+          </div>
+          
+        </div>
+        <div id='legend-pm'>
+
+          <div class='line'>PM2.5 levels (μg/m3):</div>
+          <div class='line'>
+            <div class = 'av' id='pop_missing'>&#9724;&#xFE0E;</div>
+            <div class='caption'>missing&nbsp;data&nbsp;</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_0'>&#9724;&#xFE0E;</div>
+            <div class='caption'>0&nbsp;-&nbsp;4</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_100'>&#9724;&#xFE0E;</div>
+            <div class='caption'>4&nbsp;-&nbsp;8</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_200'>&#9724;&#xFE0E;</div>
+            <div class='caption'>8&nbsp;-&nbsp;12</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_400'>&#9724;&#xFE0E;</div>
+            <div class='caption'>12&nbsp;-&nbsp;16</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_800'>&#9724;&#xFE0E;</div>
+            <div class='caption'>16&nbsp;-&nbsp;20</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_1600'>&#9724;&#xFE0E;</div>
+            <div class='caption'>20&nbsp;-&nbsp;24</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_3200'>&#9724;&#xFE0E;</div>
+            <div class='caption'>24&nbsp;-&nbsp;28</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_6400'>&#9724;&#xFE0E;</div>
+            <div class='caption'>28&nbsp;-&nbsp;32</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='pop_12800'>&#9724;&#xFE0E;</div>
+            <div class='caption'>more&nbsp;than&nbsp;32</div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- NEIGHBORHOOD FILTER -->
+      <div id='cbs' class='desktop'>
+
+        <!-- NEIGHBORHOOD/CONTENT -->
+        <div id='cbs-content'>
+
+          <div class='line'>Visible&nbsp;Regions:</div>
+          
+          <div class='line'>
+            <input type='checkbox' id='cb1' class='cbn' checked>
+            <span>&nbsp;Piemonte</span>
+          </div>
+          <div class='line'>
+            <input type='checkbox' id='cb2' class='cbn' checked>
+            <span>&nbsp;Valle d'Aosta</span>
+          </div>
+          <div class='line'>
+            <input type='checkbox' id='cb3' class='cbn' checked>
+            <span>&nbsp;Lombardia</span>
+          </div>
+          <div class='line'>
+            <input type='checkbox' id='cb4' class='cbn' checked>
+            <span>&nbsp;Trentino-Alto Adige</span>
+          </div>
+          <div class='line'>
+            <input type='checkbox' id='cb5' class='cbn' checked>
+            <span>&nbsp;Veneto</span>
+          </div>
+          <div class='line'>
+            <input type='checkbox' id='cb6' class='cbn' checked>
+            <span>&nbsp;Friuli-Venezia Giulia</span>
+          </div>
+          <div class='line'>
+            <input type='checkbox' id='cb7' class='cbn' checked>
+            <span>&nbsp;Liguria</span>
+          </div>
+          <div class='line'>
+            <input type='checkbox' id='cb8' class='cbn' checked>
+            <span>&nbsp;Emilia-Romagna</span>
+          </div>
+          <div class='line'>
+            <input type='checkbox' id='cb9' class='cbn' checked>
+            <span>&nbsp;Toscana</span>
+          </div>
+          <div class='line'>
+            <input type='checkbox' id='cb10' class='cbn' checked>
+            <span>&nbsp;Umbria</span>
+          </div>
+          <div class='line'>
+            <input type='checkbox' id='cb11' class='cbn' checked>
+            <span>&nbsp;Marche</span>
+          </div>
+          <div class='line'>
+            <input type='checkbox' id='cb12' class='cbn' checked>
+            <span>&nbsp;Lazio</span>
+          </div>
+          <div class='line'>
+            <input type='checkbox' id='cb13' class='cbn' checked>
+            <span>&nbsp;Abruzzo</span>
+          </div>
+          <div class='line'>
+            <input type='checkbox' id='cb14' class='cbn' checked>
+            <span>&nbsp;Molise</span>
+          </div>
+          <div class='line'>
+            <input type='checkbox' id='cb15' class='cbn' checked>
+            <span>&nbsp;Campania</span>
+          </div>
+        <div class='line'>
+          <input type='checkbox' id='cb16' class='cbn' checked>
+          <span>&nbsp;Puglia</span>
+        </div>
+        <div class='line'>
+          <input type='checkbox' id='cb17' class='cbn' checked>
+          <span>&nbsp;Basilicata</span>
+        </div>
+        <div class='line'>
+          <input type='checkbox' id='cb18' class='cbn' checked>
+          <span>&nbsp;Calabria</span>
+        </div>
+        <div class='line'>
+          <input type='checkbox' id='cb19' class='cbn' checked>
+          <span>&nbsp;Sicilia</span>
+        </div>
+        <div class='line'>
+          <input type='checkbox' id='cb20' class='cbn' checked>
+          <span>&nbsp;Sardegna</span>
+        </div>
+      </div>
+      </div>
+
+      <!-- STATSLEGEND -->
+      <div id='statslegend'>
+        
+        <!-- STATSLEGEND CONTENT -->
+        <div id='statslegend-content'>
+
+          <div class='line'>Correlation coefficient between PM2.5 and CNS deaths</div>
+
+          <div class='line'>
+            <div class = 'av' id='diff_n4000'>&#9724;&#xFE0E;</div>
+            <div class='caption'>more&nbsp;than&nbsp;0.9</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='diff_n2000'>&#9724;&#xFE0E;</div>
+            <div class='caption'>0.6&nbsp;to&nbsp;0.8</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='diff_n1000'>&#9724;&#xFE0E;</div>
+            <div class='caption'>0.2&nbsp;to&nbsp;0.6</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='diff_n500'>&#9724;&#xFE0E;</div>
+            <div class='caption'>0&nbsp;to&nbsp;0.2</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='diff_500'>&#9724;&#xFE0E;</div>
+            <div class='caption'>-0.2&nbsp;to&nbsp;0</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='diff_2000'>&#9724;&#xFE0E;</div>
+            <div class='caption'>-0.4&nbsp;to&nbsp;-0.2</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='diff_4000'>&#9724;&#xFE0E;</div>
+            <div class='caption'>-0.6&nbsp;to&nbsp;-0.4</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='diff_12000'>&#9724;&#xFE0E;</div>
+            <div class='caption'>-0.8&nbsp;to&nbsp;-0.6</div>
+          </div>
+          <div class='line'>
+            <div class = 'av' id='diff_32000'>&#9724;&#xFE0E;</div>
+            <div class='caption'>less&nbsp;than&nbsp;-0.8</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- STATS-INFO -->
+    <div id='info' class='desktop'>
+
+      <!-- INFO/HEADER -->
+      <div id='info-header'></div>
+      
+      <!-- INFO/CONTENT -->
+      <div id='info-content'>
+
+        <!-- NTA-POPULATION-GRAPH-->
+        <div id='info-popgraph'></div>
+        
+        <!-- NTA-TYPE-METRIC -->
+        <div id='info-ntatype' class='param'>
+            <div id='info-ntatype-value' class='param-value'></div>
+            <div id='info-ntatype-caption' class='param-caption'>Import/Export Type:</div>
+        </div>
+
+        <!-- NTA-MINPOP-METRIC -->
+        <div id='info-ntaflux' class='param'>
+            <div id='info-ntaflux-value' class='param-value'></div>
+            <div id='info-ntaflux-caption' class='param-caption'>Daytime Change:</div>
+        </div>
+
+
+
+
+      </div>
+
+    </div>
+
+    <div id='tg'>
+      <div class="center">
+        <h3> Absolute </h3>
+
+        <input type="checkbox" id="switch" /><label for="switch">Toggle</label>  
+        <h3> Relative </h3>
+      
+      </div>
+   </div>
+    <!-- STORY MODE -->
+    <div id = 'storymode'>
+
+      <!-- STORY MODE/HEADER -->
+      <div id = 'storymode-header'>The Visualization of Central Nervous System disease and PM2.5 in Italy.</div>
+
+      <!-- STORY MODE/CONTENT -->
+      <div id = 'storymode-content'>
+        <p>This dashboard shows the connection between CNS disease and PM values in Italy. It is known from research that pollution has harmful effects that can lead to a variety of diseases. The majority of evidence on the connection between dust and health has focused on lung and cardiovascular diseases. The effects of air pollution on the central nervous system (CNS), on the other hand, are a more recent discovery. 
+          Each of the following stories, supports the visualization that shows the most relevant, or curious statistics about the distribution of the pollution level and central nervous system diseases in italian provinces.</p>
+      </div>
+
+      <!-- STORY MODE/CONTROLS -->
+      <div class = 'noselect' id = 'storymode-controls'>
+
+        <!-- STORY MODE/CONTROLS/PAGE -->
+        <i class='arrow left' id = 'story-back'></i>
+        <span id = 'storymode-controls-numbers'>1 of 15</span>
+        <i class='arrow right' id = 'story-forward'></i>
+
+      </div>
+
+    </div>
+
+    <!-- CONTROLS -->
+    <div id = 'controls'>
+      
+      <div id='slider-area-t'>
+        <div id='slider-t'></div>
+      </div>
+      <div id='slider-area-b'>
+        <div id='slider-b'></div>
+      </div>
+      
+    </div>
+
+    <!-- MB Map -->
+    <div id='map'></div>
+
+    <!-- JS-MANPOP -->
+    <script src='scripts/manpop.js'></script>
+    <script src='scripts/manpop_graphs.js'></script>
+    <script src='scripts/manpop_story.js'></script>
+
+  </body>
+
+</html>
