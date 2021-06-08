@@ -68,7 +68,7 @@ flyToMobile: {
  },
  flyToMobile: {
    center: [12.5674,41.8719],
-   zoom: 1.0,
+   zoom: 0,
    bearing: -20,
    pitch: 45.00,
    speed: 0.3
@@ -90,7 +90,7 @@ flyToMobile: {
  },
  flyToMobile: {
    center: [12.5674,41.8719],
-   zoom: 2,
+   zoom: 0,
    bearing: -20,
    pitch: 75.00,
    speed: 0.3
@@ -112,7 +112,7 @@ flyToMobile: {
  },
  flyToMobile: {
    center: [12.5674,41.8719],
-   zoom: 1.50,
+   zoom: 0,
    bearing: -20,
    pitch: 75.00,
    speed: 0.3
