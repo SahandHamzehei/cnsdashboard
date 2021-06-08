@@ -110,11 +110,11 @@ var start_viz = {
 };
 
 var start_viz_mobile = {
+  zoom: 0.00,
   center: [14,42],
-  zoom: 0,
-  bearing: -20,
-  pitch: 45.00,
-  speed: 0.1
+  bearing: -2.35,
+  pitch: 60.00,
+  speed: 0.3
 };
 
 var start_stats = {
@@ -126,11 +126,11 @@ var start_stats = {
 };
 
 var start_stats_mobile = {
+  zoom: 0.00,
   center: [14,42],
-  zoom: 0,
-  bearing: -20,
+  bearing: -2.35,
   pitch: 0.00,
-  speed: 0.1
+  speed: 0.3
 };
 
 var start_story = {
