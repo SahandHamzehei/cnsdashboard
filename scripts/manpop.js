@@ -126,7 +126,7 @@ var start_stats = {
 };
 
 var start_stats_mobile = {
-  zoom: 4.95,
+  zoom: 0,
   center: [14,42],
   bearing: -2.35,
   pitch: 0.00,
