@@ -450,6 +450,9 @@ function changeMode(settings) {
   // Change the map to STATS mode.
   if (settings.id == "stats") {
     d3.select("#controls").style("display", "none");
+    d3.select("#legend-content").style("display",  "none");
+    d3.select("#legend-rel").style("display",  "none");
+    d3.select("#legend-pm").style("display",  "none");
 
     map.setLayoutProperty("rel", "visibility", "none");
     map.setLayoutProperty("pol", "visibility", "none");
