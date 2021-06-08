@@ -126,11 +126,11 @@ var start_stats = {
 };
 
 var start_stats_mobile = {
-  zoom: 0,
   center: [14,42],
-  bearing: -2.35,
+  zoom: 0,
+  bearing: -20,
   pitch: 0.00,
-  speed: 0.3
+  speed: 0.1
 };
 
 var start_story = {
