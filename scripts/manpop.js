@@ -127,7 +127,7 @@ var start_stats = {
 
 var start_stats_mobile = {
   zoom: 0,
-  center: [12.5674,41.8719],
+  center: [16.515,45.623],
   bearing: -2.35,
   pitch: 0.00,
   speed: 0.3
