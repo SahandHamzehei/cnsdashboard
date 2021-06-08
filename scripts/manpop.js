@@ -110,7 +110,7 @@ var start_viz = {
 };
 
 var start_viz_mobile = {
-  center: [12.5674,41.8719],
+  center: [14,42],
   zoom: 0,
   bearing: -20,
   pitch: 45.00,
@@ -127,7 +127,7 @@ var start_stats = {
 
 var start_stats_mobile = {
   zoom: 0,
-  center: [16.515,45.623],
+  center: [14,42],
   bearing: -2.35,
   pitch: 0.00,
   speed: 0.3
@@ -135,7 +135,7 @@ var start_stats_mobile = {
 
 var start_story = {
   zoom: 4.95,
-  center: [16.515,45.623],
+  center: [14,42],
   bearing: -2.35,
   pitch: 60.0
 };
