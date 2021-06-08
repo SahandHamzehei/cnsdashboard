@@ -27,7 +27,7 @@ var stories = [
       zoom: 0,
       bearing: -20,
       pitch: 45.00,
-      speed: 0.3
+      speed: 0.1
     }
   },
 
@@ -48,7 +48,7 @@ flyToMobile: {
   center: [12.5674,41.8719],
   zoom: 0,
   bearing: -20,
-  pitch: 55.00,
+  pitch: 75.00,
   speed: 0.3
 }
 },
@@ -67,10 +67,10 @@ flyToMobile: {
    speed: 0.3
  },
  flyToMobile: {
-   center: [8.51,46.00],
+   center: [12.5674,41.8719],
    zoom: 1.0,
    bearing: -20,
-   pitch: 65.00,
+   pitch: 45.00,
    speed: 0.3
  }
 },
@@ -89,8 +89,8 @@ flyToMobile: {
    speed: 0.3
  },
  flyToMobile: {
-   center: [7.51,45.05],
-   zoom: 1.50,
+   center: [12.5674,41.8719],
+   zoom: 2,
    bearing: -20,
    pitch: 75.00,
    speed: 0.3
@@ -111,7 +111,7 @@ flyToMobile: {
    speed: 0.3
  },
  flyToMobile: {
-   center: [8.51,46.00],
+   center: [12.5674,41.8719],
    zoom: 1.50,
    bearing: -20,
    pitch: 75.00,
@@ -135,7 +135,7 @@ flyToMobile: {
  },
  flyToMobile: {
    center: [12.98,41.65],
-   zoom: 1.50,
+   zoom: 0,
    bearing: -20,
    pitch: 75.00,
    peed: 0.3
@@ -157,7 +157,7 @@ flyToMobile: {
  },
  flyToMobile: {
   center: [12.5674,41.8719],
-  zoom: 1.50,
+  zoom: 0,
   bearing: -20,
   pitch: 45.00,
   speed: 0.3
