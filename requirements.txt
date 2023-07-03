@@ -1,4 +1,4 @@
-List of important libraries:
+List of important libraries you will need before ruuning the repo:
 actdiag==2.0.0
 alabaster==0.7.12
 arrow==1.2.2
